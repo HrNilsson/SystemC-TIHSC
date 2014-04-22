@@ -1,0 +1,37 @@
+C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/SynFir_SynFir_DoCalculate.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/SynFir_SynFir_DoCalculate.vhd
+Model Technology ModelSim SE vcom 6.3 Compiler 2007.05 May  4 2007
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Loading package craft_gatelibrary
+-- Compiling entity synfir_docalculate
+-- Compiling architecture synfir_docalculate_syn of synfir_docalculate
+
+} {} {}} C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/SynFir_SynFir.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/SynFir_SynFir.vhd
+Model Technology ModelSim SE vcom 6.3 Compiler 2007.05 May  4 2007
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Loading package craft_gatelibrary
+-- Compiling entity synfir
+-- Compiling architecture synfir_syn of synfir
+
+} {} {}} C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/craft_gatelibrary.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/craft_gatelibrary.vhd
+Model Technology ModelSim SE vcom 6.3 Compiler 2007.05 May  4 2007
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling package craft_gatelibrary
+-- Compiling package body craft_gatelibrary
+-- Loading package craft_gatelibrary
+
+} {} {}} C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/main.cpp {1 {sccom -work work C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/main.cpp
+Model Technology ModelSim SE sccom 6.3 compiler 2007.05 May  4 2007
+
+Exported modules:
+	Top
+
+} {} {}} C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/Top.cpp {1 {sccom -work work C:/Projects/SystemC/trunk/src/Implement/TemplateFir/src/Top.cpp
+Model Technology ModelSim SE sccom 6.3 compiler 2007.05 May  4 2007
+
+} {} {}}
