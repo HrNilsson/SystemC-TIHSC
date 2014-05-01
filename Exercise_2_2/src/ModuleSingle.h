@@ -5,13 +5,14 @@
 SC_MODULE (ModuleSingle)
 {
 	sc_uint<4> counter = 0;
-		
+	sc_event increment_event;
+
 	void increment();
 	void notify();
 
 	SC_CTOR(ModuleSingle) {
 		SC_METHOD(increment);
-		sensitive << tosomeevent;
+		sensitive << increment_event;
 		SC_THREAD(notify);
 	}
 };
