@@ -1,5 +1,7 @@
 #include "ModuleSingle.h"
 #include "ModuleDouble.h"
+#include "Top231.h"
+
 
 int sc_main(int argc, char* argv[])
 {
@@ -19,8 +21,7 @@ int sc_main(int argc, char* argv[])
 
 	/*-----2.3.1-----*/
 
-	ModuleProducer producer("ModuleProducer");
-	ModuleConsumer consumer("ModuleConsumer");
+	Top231 top231("Top231");
 	sc_start(100, SC_MS);
 	return 0;
 

@@ -16,14 +16,13 @@ typedef struct
 	sc_uint<16> Checksum;
 	sc_uint<16> UrgentPointer;
 	char Data[DATA_SIZE];
+
+
 } TCPHeader;
-
-//TODO..?
-
-sc_fifo<TCPHeader> fifo_channel;
 
 SC_MODULE (ModuleProducer)
 {
+	sc_port<sc_fifo_out_if<TCPHeader *>,0> out;
 
 	void Producer_th();
 
@@ -32,4 +31,4 @@ SC_MODULE (ModuleProducer)
 	}
 };
 
-#endif /* MAC_H_ */
+#endif

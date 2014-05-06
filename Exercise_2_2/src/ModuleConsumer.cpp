@@ -3,10 +3,10 @@
 using namespace std;
 
 void ModuleConsumer::Consumer_th() {
-	TCPHeader tcpHead;
+	TCPHeader *tcpHead;
 
 	while (1) {
-		tcpHead = fifo_channel.read();
-		cout << sc_time_stamp() << " " << tcpHead.SequenceNumber << endl;
+		tcpHead = fifo_in.read();
+		cout << sc_time_stamp() << " " << tcpHead->SequenceNumber << " " << name() << endl;
 	}
 }

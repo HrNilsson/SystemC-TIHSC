@@ -5,11 +5,12 @@ using namespace std;
 void ModuleProducer::Producer_th() {
 	TCPHeader tcpHead;
 
-	tcpHead.SequenceNumber = 1;
+	tcpHead.SequenceNumber = 0;
 	while (1) {
 		wait(rand()%9 + 2, SC_MS);
 		tcpHead.SequenceNumber++;
-		fifo_channel.write(tcpHead);
+		out[0]->write(&tcpHead);
+		out[1]->write(&tcpHead);
 	}
 }
 

@@ -5,6 +5,8 @@
 
 SC_MODULE (ModuleConsumer)
 {
+	sc_fifo_in<TCPHeader*> fifo_in;
+
 	void Consumer_th();
 
 	SC_CTOR(ModuleConsumer) {
