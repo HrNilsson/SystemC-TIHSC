@@ -14,13 +14,7 @@
 SC_MODULE (Master)
 {
 	sc_in_clk CLK;
-	
-	sc_in<sc_logic> ready;
-	sc_out<sc_logic> valid;
-
-	sc_out<sc_int<CHANNEL_BITS> > channel;
-	sc_out<sc_int<ERROR_BITS> > error;
-	sc_out<sc_int<DATA_BITS> > data;
+	sc_fifo_out<int> out;
 
 	void transmit_th();
 

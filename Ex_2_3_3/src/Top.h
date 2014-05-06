@@ -9,9 +9,13 @@
 SC_MODULE (Top)
 {
 	sc_clock clock;
+	sc_signal<sc_logic> reset;
 
 	Master m;
 	Slave s;
+	InAdapter<int, 16> a;
+
+	//sc_fifo<int> fifo;
 
 	sc_signal<sc_logic> ready;
 	sc_signal<sc_logic> valid;
@@ -21,9 +25,11 @@ SC_MODULE (Top)
 
 	sc_trace_file *tracefile;
 
-	SC_CTOR(Top): clock("clock", sc_time(20, SC_NS)), m("Master"), s("Slave"),
+	SC_CTOR(Top): clock("clock", sc_time(20, SC_NS)), reset("reset"), m("Master"), s("Slave"), a("InAdapter"),
 			ready("ready"), valid("valid"), channel("channel"), error("error"), data("data")
 	{
+		reset.write(false);
+
 		s.CLK(clock);
 		s.ready(ready);
 		s.valid(valid);
@@ -31,13 +37,16 @@ SC_MODULE (Top)
 		s.error(error);
 		s.channel(channel);
 
+		a.clock(clock);
+		a.reset(reset);
+		a.ready(ready);
+		a.valid(valid);
+		a.data(data);
+		a.error(error);
+		a.channel(channel);
 
 		m.CLK(clock);
-		m.ready(ready);
-		m.valid(valid);
-		m.data(data);
-		m.error(error);
-		m.channel(channel);
+		m.out(a);
 
 		// Create tacefile
 		tracefile = sc_create_vcd_trace_file("streamingWave");
