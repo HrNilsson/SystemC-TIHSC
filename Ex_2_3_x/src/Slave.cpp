@@ -14,13 +14,17 @@ void Slave::receive_th() {
 
 	while(1) {
 		wait();
-		wait();
-		wait();
 		ready.write(SC_LOGIC_1);
 
-		while(valid.read() == SC_LOGIC_0) {
+		for(int i = 0; i<10; i++) {
+			while(valid.read() == SC_LOGIC_0) {
+				wait();
+			}
+			cout << data.read() << endl;
 			wait();
 		}
-		cout << data.read() << endl;
+
+		ready.write(SC_LOGIC_0);
+		wait();
 	}
 }

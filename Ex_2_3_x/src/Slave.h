@@ -26,8 +26,7 @@ SC_MODULE (Slave)
 
 	SC_CTOR(Slave) {
 		SC_THREAD(receive_th);
-			sensitive_pos << CLK;
-			dont_initialize();
+			sensitive << CLK.neg();
 	}
 };
 

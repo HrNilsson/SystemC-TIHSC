@@ -26,8 +26,7 @@ SC_MODULE (Master)
 
 	SC_CTOR(Master) {
 		SC_THREAD(transmit_th);
-			sensitive_pos << CLK;
-			dont_initialize();
+			sensitive << CLK.pos();
 	}
 };
 

@@ -1,0 +1,388 @@
+$date
+     May 06, 2014       20:38:44
+$end
+
+$version
+              SystemC 2.2.0 --- Apr 22 2014 04:22:38
+$end
+
+$timescale
+     1 ns
+$end
+
+$scope module SystemC $end
+$var wire    1  aaa  clock       $end
+$var wire    1  aab  ready       $end
+$var wire    1  aac  valid       $end
+$var wire   16  aad  data [15:0]  $end
+$var wire    2  aae  error [1:0]  $end
+$var wire    4  aaf  channel [3:0]  $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+1aaa
+0aab
+0aac
+b0 aad
+b0 aae
+b0 aaf
+$end
+
+#10
+0aaa
+1aab
+
+#20
+1aaa
+1aac
+
+#30
+0aaa
+
+#40
+1aaa
+b1 aad
+
+#50
+0aaa
+
+#60
+1aaa
+b10 aad
+
+#70
+0aaa
+
+#80
+1aaa
+b11 aad
+
+#90
+0aaa
+
+#100
+1aaa
+b100 aad
+
+#110
+0aaa
+
+#120
+1aaa
+b101 aad
+
+#130
+0aaa
+
+#140
+1aaa
+b110 aad
+
+#150
+0aaa
+
+#160
+1aaa
+b111 aad
+
+#170
+0aaa
+
+#180
+1aaa
+b1000 aad
+
+#190
+0aaa
+
+#200
+1aaa
+b1001 aad
+
+#210
+0aaa
+
+#220
+1aaa
+b1010 aad
+
+#230
+0aaa
+0aab
+
+#240
+1aaa
+0aac
+
+#250
+0aaa
+
+#260
+1aaa
+
+#270
+0aaa
+1aab
+
+#280
+1aaa
+1aac
+b1011 aad
+
+#290
+0aaa
+
+#300
+1aaa
+b1100 aad
+
+#310
+0aaa
+
+#320
+1aaa
+b1101 aad
+
+#330
+0aaa
+
+#340
+1aaa
+b1110 aad
+
+#350
+0aaa
+
+#360
+1aaa
+b1111 aad
+
+#370
+0aaa
+
+#380
+1aaa
+b10000 aad
+
+#390
+0aaa
+
+#400
+1aaa
+b10001 aad
+
+#410
+0aaa
+
+#420
+1aaa
+b10010 aad
+
+#430
+0aaa
+
+#440
+1aaa
+b10011 aad
+
+#450
+0aaa
+
+#460
+1aaa
+b10100 aad
+
+#470
+0aaa
+
+#480
+1aaa
+b10101 aad
+
+#490
+0aaa
+0aab
+
+#500
+1aaa
+0aac
+
+#510
+0aaa
+
+#520
+1aaa
+
+#530
+0aaa
+1aab
+
+#540
+1aaa
+1aac
+b10110 aad
+
+#550
+0aaa
+
+#560
+1aaa
+b10111 aad
+
+#570
+0aaa
+
+#580
+1aaa
+b11000 aad
+
+#590
+0aaa
+
+#600
+1aaa
+b11001 aad
+
+#610
+0aaa
+
+#620
+1aaa
+b11010 aad
+
+#630
+0aaa
+
+#640
+1aaa
+b11011 aad
+
+#650
+0aaa
+
+#660
+1aaa
+b11100 aad
+
+#670
+0aaa
+
+#680
+1aaa
+b11101 aad
+
+#690
+0aaa
+
+#700
+1aaa
+b11110 aad
+
+#710
+0aaa
+
+#720
+1aaa
+b11111 aad
+
+#730
+0aaa
+
+#740
+1aaa
+b100000 aad
+
+#750
+0aaa
+0aab
+
+#760
+1aaa
+0aac
+
+#770
+0aaa
+
+#780
+1aaa
+
+#790
+0aaa
+1aab
+
+#800
+1aaa
+1aac
+b100001 aad
+
+#810
+0aaa
+
+#820
+1aaa
+b100010 aad
+
+#830
+0aaa
+
+#840
+1aaa
+b100011 aad
+
+#850
+0aaa
+
+#860
+1aaa
+b100100 aad
+
+#870
+0aaa
+
+#880
+1aaa
+b100101 aad
+
+#890
+0aaa
+
+#900
+1aaa
+b100110 aad
+
+#910
+0aaa
+
+#920
+1aaa
+b100111 aad
+
+#930
+0aaa
+
+#940
+1aaa
+b101000 aad
+
+#950
+0aaa
+
+#960
+1aaa
+b101001 aad
+
+#970
+0aaa
+
+#980
+1aaa
+b101010 aad
+
+#990
+0aaa
+
