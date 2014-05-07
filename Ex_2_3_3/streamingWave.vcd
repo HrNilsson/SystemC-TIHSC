@@ -1,5 +1,5 @@
 $date
-     May 06, 2014       20:38:44
+     May 07, 2014       09:28:09
 $end
 
 $version
@@ -12,11 +12,12 @@ $end
 
 $scope module SystemC $end
 $var wire    1  aaa  clock       $end
-$var wire    1  aab  ready       $end
-$var wire    1  aac  valid       $end
-$var wire   16  aad  data [15:0]  $end
-$var wire    2  aae  error [1:0]  $end
-$var wire    4  aaf  channel [3:0]  $end
+$var wire    1  aab  reset       $end
+$var wire    1  aac  ready       $end
+$var wire    1  aad  valid       $end
+$var wire   16  aae  data [15:0]  $end
+$var wire    2  aaf  error [1:0]  $end
+$var wire    4  aag  channel [3:0]  $end
 $upscope $end
 $enddefinitions  $end
 
@@ -28,96 +29,98 @@ $dumpvars
 1aaa
 0aab
 0aac
-b0 aad
+0aad
 b0 aae
 b0 aaf
+b0 aag
 $end
 
 #10
 0aaa
-1aab
+1aac
 
 #20
 1aaa
-1aac
+1aad
+b1 aae
 
 #30
 0aaa
 
 #40
 1aaa
-b1 aad
+b10 aae
 
 #50
 0aaa
 
 #60
 1aaa
-b10 aad
+b11 aae
 
 #70
 0aaa
 
 #80
 1aaa
-b11 aad
+b100 aae
 
 #90
 0aaa
 
 #100
 1aaa
-b100 aad
+b101 aae
 
 #110
 0aaa
 
 #120
 1aaa
-b101 aad
+b110 aae
 
 #130
 0aaa
 
 #140
 1aaa
-b110 aad
+b111 aae
 
 #150
 0aaa
 
 #160
 1aaa
-b111 aad
+b1000 aae
 
 #170
 0aaa
 
 #180
 1aaa
-b1000 aad
+b1001 aae
 
 #190
 0aaa
 
 #200
 1aaa
-b1001 aad
+b1010 aae
 
 #210
 0aaa
 
 #220
 1aaa
-b1010 aad
+b1011 aae
 
 #230
 0aaa
-0aab
+0aac
 
 #240
 1aaa
-0aac
+0aad
 
 #250
 0aaa
@@ -127,90 +130,90 @@ b1010 aad
 
 #270
 0aaa
-1aab
+1aac
 
 #280
 1aaa
-1aac
-b1011 aad
+1aad
+b1100 aae
 
 #290
 0aaa
 
 #300
 1aaa
-b1100 aad
+b1101 aae
 
 #310
 0aaa
 
 #320
 1aaa
-b1101 aad
+b1110 aae
 
 #330
 0aaa
 
 #340
 1aaa
-b1110 aad
+b1111 aae
 
 #350
 0aaa
 
 #360
 1aaa
-b1111 aad
+b10000 aae
 
 #370
 0aaa
 
 #380
 1aaa
-b10000 aad
+b10001 aae
 
 #390
 0aaa
 
 #400
 1aaa
-b10001 aad
+b10010 aae
 
 #410
 0aaa
 
 #420
 1aaa
-b10010 aad
+b10011 aae
 
 #430
 0aaa
 
 #440
 1aaa
-b10011 aad
+b10100 aae
 
 #450
 0aaa
 
 #460
 1aaa
-b10100 aad
+b10101 aae
 
 #470
 0aaa
 
 #480
 1aaa
-b10101 aad
+b10110 aae
 
 #490
 0aaa
-0aab
+0aac
 
 #500
 1aaa
-0aac
+0aad
 
 #510
 0aaa
@@ -220,90 +223,90 @@ b10101 aad
 
 #530
 0aaa
-1aab
+1aac
 
 #540
 1aaa
-1aac
-b10110 aad
+1aad
+b10111 aae
 
 #550
 0aaa
 
 #560
 1aaa
-b10111 aad
+b11000 aae
 
 #570
 0aaa
 
 #580
 1aaa
-b11000 aad
+b11001 aae
 
 #590
 0aaa
 
 #600
 1aaa
-b11001 aad
+b11010 aae
 
 #610
 0aaa
 
 #620
 1aaa
-b11010 aad
+b11011 aae
 
 #630
 0aaa
 
 #640
 1aaa
-b11011 aad
+b11100 aae
 
 #650
 0aaa
 
 #660
 1aaa
-b11100 aad
+b11101 aae
 
 #670
 0aaa
 
 #680
 1aaa
-b11101 aad
+b11110 aae
 
 #690
 0aaa
 
 #700
 1aaa
-b11110 aad
+b11111 aae
 
 #710
 0aaa
 
 #720
 1aaa
-b11111 aad
+b100000 aae
 
 #730
 0aaa
 
 #740
 1aaa
-b100000 aad
+b100001 aae
 
 #750
 0aaa
-0aab
+0aac
 
 #760
 1aaa
-0aac
+0aad
 
 #770
 0aaa
@@ -313,75 +316,75 @@ b100000 aad
 
 #790
 0aaa
-1aab
+1aac
 
 #800
 1aaa
-1aac
-b100001 aad
+1aad
+b100010 aae
 
 #810
 0aaa
 
 #820
 1aaa
-b100010 aad
+b100011 aae
 
 #830
 0aaa
 
 #840
 1aaa
-b100011 aad
+b100100 aae
 
 #850
 0aaa
 
 #860
 1aaa
-b100100 aad
+b100101 aae
 
 #870
 0aaa
 
 #880
 1aaa
-b100101 aad
+b100110 aae
 
 #890
 0aaa
 
 #900
 1aaa
-b100110 aad
+b100111 aae
 
 #910
 0aaa
 
 #920
 1aaa
-b100111 aad
+b101000 aae
 
 #930
 0aaa
 
 #940
 1aaa
-b101000 aad
+b101001 aae
 
 #950
 0aaa
 
 #960
 1aaa
-b101001 aad
+b101010 aae
 
 #970
 0aaa
 
 #980
 1aaa
-b101010 aad
+b101011 aae
 
 #990
 0aaa

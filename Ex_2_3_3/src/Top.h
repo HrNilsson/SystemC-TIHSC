@@ -5,6 +5,7 @@
 #include <systemc.h>
 #include "Master.h"
 #include "Slave.h"
+#include "InAdapter.h"
 
 SC_MODULE (Top)
 {
@@ -13,9 +14,7 @@ SC_MODULE (Top)
 
 	Master m;
 	Slave s;
-	InAdapter<int, 16> a;
-
-	//sc_fifo<int> fifo;
+	InAdapter<int> a;
 
 	sc_signal<sc_logic> ready;
 	sc_signal<sc_logic> valid;
@@ -28,7 +27,7 @@ SC_MODULE (Top)
 	SC_CTOR(Top): clock("clock", sc_time(20, SC_NS)), reset("reset"), m("Master"), s("Slave"), a("InAdapter"),
 			ready("ready"), valid("valid"), channel("channel"), error("error"), data("data")
 	{
-		reset.write(false);
+		reset.write(SC_LOGIC_0);
 
 		s.CLK(clock);
 		s.ready(ready);
@@ -56,6 +55,7 @@ SC_MODULE (Top)
 		tracefile->set_time_unit(1, SC_NS);
 
 		sc_trace(tracefile, clock, "clock");
+		sc_trace(tracefile, reset, "reset");
 
 		sc_trace(tracefile, ready, "ready");
 

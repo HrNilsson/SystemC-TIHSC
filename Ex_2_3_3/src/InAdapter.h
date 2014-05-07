@@ -1,8 +1,9 @@
 #ifndef INADAPTER_H_
-#define INADAPTER_H_template <class T>
+#define INADAPTER_H_
 
-#include "Defs.h"
+#include "defs.h"
 
+template <class T>
 class InAdapter: public sc_fifo_out_if <T>, public sc_module
 {
 	public:
@@ -26,16 +27,17 @@ class InAdapter: public sc_fifo_out_if <T>, public sc_module
 			// Output sample data on negative edge of clock
 			while (ready == SC_LOGIC_0) 
 			{
+				valid.write(SC_LOGIC_0); // My fix
 				wait(clock.posedge_event());
 			}
 
-			wait(clock.posedge_event());
+			//wait(clock.posedge_event());
 			data.write(value);
 			channel.write(0); // Channel number
 			error.write(0); // Error
 			valid.write(SC_LOGIC_1); // Signal valid new data
 			wait(clock.posedge_event());
-			valid.write(SC_LOGIC_0);
+//			valid.write(SC_LOGIC_0);
 			}
 		else wait(clock.posedge_event());
 	}
