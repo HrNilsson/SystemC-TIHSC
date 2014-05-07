@@ -27,7 +27,6 @@ class InAdapter: public sc_fifo_out_if <T>, public sc_module
 			// Output sample data on negative edge of clock
 			while (ready == SC_LOGIC_0) 
 			{
-				valid.write(SC_LOGIC_0); // My fix
 				wait(clock.posedge_event());
 			}
 
@@ -37,7 +36,7 @@ class InAdapter: public sc_fifo_out_if <T>, public sc_module
 			error.write(0); // Error
 			valid.write(SC_LOGIC_1); // Signal valid new data
 			wait(clock.posedge_event());
-//			valid.write(SC_LOGIC_0);
+			valid.write(SC_LOGIC_0);
 			}
 		else wait(clock.posedge_event());
 	}
