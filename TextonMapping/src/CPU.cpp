@@ -70,5 +70,5 @@ void CPU::Filter() {
 	  }
 	  image_output_local = image_output;
 
-	  //Signal
+	  filterDone.write(true);
 }

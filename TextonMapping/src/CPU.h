@@ -21,6 +21,7 @@ class CPU : public sc_module
 public:
 	sc_signal<bool> readDone;
 	sc_out<bool> filterDone;
+	sc_in<bool> kMeansDone;
 
 	void ReadImage();
 	void WriteImage();

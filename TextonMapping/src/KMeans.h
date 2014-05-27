@@ -17,6 +17,7 @@ class KMeans : public sc_module
 
 public:
 	sc_in<bool> filterDone;
+	sc_out<bool> kMeansDone;
 
 	void RunKMeans();
 

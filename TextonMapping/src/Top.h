@@ -15,6 +15,7 @@ SC_MODULE (Top)
 	KMeans kMeans;
 
 	sc_signal<bool> filterDone;
+	sc_signal<bool> kMeansDone;
 
 	sc_trace_file *tracefile;
 
@@ -22,7 +23,9 @@ SC_MODULE (Top)
 	{
 
 		cpu.filterDone(filterDone);
+		cpu.kMeansDone(kMeansDone);
 		kMeans.filterDone(filterDone);
+		kMeans.kMeansDone(kMeansDone);
 
 		// Create tacefile
 		tracefile = sc_create_vcd_trace_file("streamingWave");
