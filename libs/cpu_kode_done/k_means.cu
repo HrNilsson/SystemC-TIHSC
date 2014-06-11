@@ -5,32 +5,22 @@
  */
 
 #include <math.h>
-//#include "debugging.h"
+#include "debugging.h"
 #include "k_means.h"
 #include <time.h>
 #include <sys/time.h>
 
-#ifndef N_PIXELS
-#define N_PIXELS 96516
-#endif
-
-#ifndef NUM_FILT
-#define NUM_FILT 15
-#endif
 
 void k_means_init(float* centers, float* feature_image)
 // float* centers are an array with the centers of 64 clusters in NUM_FILT dimensions.
 {
   srand (time(NULL));
   int r;
-  int c;
-  int f;
-
-  for(c = 0; c < N_CLUSTERS; c++)
+  for(int c = 0; c < N_CLUSTERS; c++)
   {
-    rand() % N_PIXELS;
+    r = rand() % N_PIXELS;
     
-    for(f = 0; f < NUM_FILT; f++)
+    for(int f = 0; f < NUM_FILT; f++)
     {
       centers[c*NUM_FILT+f] = feature_image[r*NUM_FILT+f];
     }
@@ -47,23 +37,16 @@ void k_means_calc_distance(float* centers, float* feature, int* pixelClusterInde
   memset(d, 0, sizeof(float)*N_PIXELS);
   float temp_d = 0.0f;
   float min_d;
-  int p,c,i;
   
-
-  fprintf(stdout,"1\n");
-  for(p = 0; p < N_PIXELS; p++)
+  for(int p = 0; p < N_PIXELS; p++)
   {
-	  fprintf(stdout,"Pixels: %i\n", p);
     // set min_d to maximum distance to evaluate new distances for every pixel
     min_d = 1000.0f;
-    for(c = 0; c < N_CLUSTERS; c++)
+    for(int c = 0; c < N_CLUSTERS; c++)
     {
-    	fprintf(stdout,"Clusters: %i\n", c);
-
-      for(i = 0; i < NUM_FILT; i++)
+      for(int i = 0; i < NUM_FILT; i++)
       {
 	d[p] += pow(centers[c*NUM_FILT+i]-(double)(feature[p*NUM_FILT+i]),2);
-
       }
       temp_d = sqrt(d[p]);
       // Nulstil d[p]
@@ -80,9 +63,7 @@ void k_means_calc_distance(float* centers, float* feature, int* pixelClusterInde
       }
     }
   }
-  fprintf(stdout,"6\n");
   free(d);
-  fprintf(stdout,"7\n");
 }
 
 void calc_mean_value(int* labelImage, float* feature_image, float* means)
@@ -92,17 +73,16 @@ void calc_mean_value(int* labelImage, float* feature_image, float* means)
 {
   int n_points;
   float* temp_m = (float*)malloc(sizeof(float)*NUM_FILT);
-  int c,p,i,m;
   
-  for(c = 0; c < N_CLUSTERS; c++)
+  for(int c = 0; c < N_CLUSTERS; c++)
   {
     n_points = 0;
     memset(temp_m, 0, sizeof(float)*NUM_FILT);
-    for(p = 0; p < N_PIXELS; p++)
+    for(int p = 0; p < N_PIXELS; p++)
     {
       if(labelImage[p] == c)
       {
-	for(i = 0; i < NUM_FILT; i++)
+	for(int i = 0; i < NUM_FILT; i++)
 	{
 	  temp_m[i] += feature_image[p*NUM_FILT+i];
 	}
@@ -113,7 +93,7 @@ void calc_mean_value(int* labelImage, float* feature_image, float* means)
     
     if(n_points > 0)
     {
-      for(m = 0; m < NUM_FILT; m++)
+      for(int m = 0; m < NUM_FILT; m++)
       {
 	means[c*NUM_FILT+m] = temp_m[m]/(float)n_points;
       }
@@ -124,8 +104,6 @@ void calc_mean_value(int* labelImage, float* feature_image, float* means)
 
 void k_means(float* features, int* textonmap)
 {
-
-	fprintf(stdout,"kMeans init\n");
   float* center = (float*)malloc(sizeof(float)*N_CLUSTERS*NUM_FILT);
   int* result = (int*)malloc(sizeof(int)*N_PIXELS);
   float* meanValues = (float*)malloc(sizeof(float)*N_CLUSTERS*NUM_FILT);
@@ -133,22 +111,18 @@ void k_means(float* features, int* textonmap)
   //clock_t t1, t2;
   //double diff;
 
-  //timeval stop, start;
-  //gettimeofday(&start, NULL);
-  fprintf(stdout,"kmeans init starting\n");
+  timeval stop, start;
+  gettimeofday(&start, NULL);
   k_means_init(center, features);
-  //gettimeofday(&stop, NULL);
-  //printf("K-means init: %lu us.\n", (stop.tv_usec - start.tv_usec));
-  fprintf(stdout,"kmeans iterator\n");
-  int iterator;
-  fprintf(stdout,"kmeans calc dist\n");
+  gettimeofday(&stop, NULL);
+  printf("K-means init: %lu us.\n", (stop.tv_usec - start.tv_usec));
+  
   k_means_calc_distance(center, features, textonmap);
   
-  fprintf(stdout,"kmeans calc mean\n");
   calc_mean_value(textonmap, features, meanValues);
 
   //t1 = clock();
-  for(iterator = 0; iterator < 1; iterator++)
+  for(int iterator = 0; iterator < 1; iterator++)
   {
     k_means_calc_distance(meanValues, features, textonmap);
       

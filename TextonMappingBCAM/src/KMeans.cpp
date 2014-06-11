@@ -11,7 +11,9 @@
 void KMeans::RunKMeans() {
 	using namespace std;
 	cout << "kMeans starting" << endl;
-	k_means(image_output_local, texton_local);
+
+
+	k_means(imageFilteredSig.read(), textonSig.read());
 
 
 	cout << "Notify kMeans Done" << endl;

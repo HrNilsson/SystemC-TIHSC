@@ -8,27 +8,23 @@
 
 SC_MODULE (Top)
 {
-	float image[96516] = {};
-	float* image_output = image;
-
-	int texton[96516] = {};
-
 	CPU cpu;
 	KMeans kMeans;
 
-	sc_signal<bool> filterDone;
+	sc_signal<float*> imageFilteredSig;
+	sc_signal<int*> textonSig;
+
 	sc_signal<bool> kMeansDone;
 
 	sc_trace_file *tracefile;
 
-	SC_CTOR(Top): cpu("CPU",image_output, texton), kMeans("K-Means", texton, image_output),
-			filterDone("filterDone"), kMeansDone("kMeansDone")
+	SC_CTOR(Top): cpu("CPU"), kMeans("K-Means"), kMeansDone("kMeansDone")
 	{
+		cpu.imageFilteredSig(imageFilteredSig);
+		kMeans.imageFilteredSig(imageFilteredSig);
 
-		cpu.filterDone(filterDone);
-		kMeans.filterDone(filterDone);
-
-
+		cpu.textonSig(textonSig);
+		kMeans.textonSig(textonSig);
 
 		cpu.kMeansDone(kMeansDone);
 		kMeans.kMeansDone(kMeansDone);
@@ -40,8 +36,9 @@ SC_MODULE (Top)
 		// Set resolution of trace file
 		tracefile->set_time_unit(1, SC_NS);
 
-
-
+		/*sc_trace(tracefile, imageFilteredSig, "imageFilteredSig");
+		sc_trace(tracefile, textonSig, "textonSig");
+		sc_trace(tracefile, kMeansDone, "kMeansDone");*/
 
 	}
 

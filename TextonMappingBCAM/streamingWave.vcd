@@ -1,0 +1,23 @@
+$date
+     Jun 09, 2014       12:51:27
+$end
+
+$version
+              SystemC 2.2.0 --- Apr 22 2014 04:22:38
+$end
+
+$timescale
+     1 ns
+$end
+
+$scope module SystemC $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+$end
+

@@ -12,26 +12,23 @@
 
 class KMeans : public sc_module
 {
-	int* texton_local;
-	float* image_output_local;
+
 
 public:
-	sc_in<bool> filterDone;
+	sc_in<float*> imageFilteredSig;
+	sc_in<int*> textonSig;
 	sc_out<bool> kMeansDone;
 
 	void RunKMeans();
 
 	SC_HAS_PROCESS(KMeans);
 
-	KMeans (sc_module_name nm, int* texton, float* image)
+	KMeans (sc_module_name nm)
 		: sc_module(nm)
 	{
-		image_output_local = image;
-		texton_local = texton;
-
 		SC_THREAD(RunKMeans);
 			dont_initialize();
-			sensitive << filterDone;
+			sensitive << textonSig;
 
 	}
 };

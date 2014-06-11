@@ -11,18 +11,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-//#include "filters.h"
-#ifndef N_PIXELS
-#define N_PIXELS 96516
-#endif
-
-#ifndef NUM_FILT
-#define NUM_FILT 15
-#endif
+#include "debugging.h"
+#include "filters.h"
 
 #define N_CLUSTERS 64
-#define N_ITERATIONS 10
+#define N_ITERATIONS 1000 
 
 #ifdef __cplusplus
 extern "C" {

@@ -15,14 +15,14 @@ void CPU::ReadImage() {
 	 // sti til input billede
 	  const char* input_file = "prikpige.raw";
 
-	  image2d* image = (image2d*)malloc(sizeof(image2d));
-	  image2d_init(image, WIDTH, HEIGHT, 1);
-	  image2d_load_from_raw(image, input_file);
+	  image2d* imageIn = (image2d*)malloc(sizeof(image2d));
+	  image2d_init(imageIn, WIDTH, HEIGHT, 1);
+	  image2d_load_from_raw(imageIn, input_file);
 
 	  // Konverter pixelsværdier til floats
 	  for(int i = 0; i < N_PIXELS; i++)
 	  {
-		  image_output_local[i] = ((float)(image->data[i]))/255.0;
+		  image[i] = ((float)(imageIn->data[i]))/255.0;
 	  }
 
 	  //wait(SC_NS)
@@ -40,7 +40,7 @@ void CPU::WriteImage() {
 	int i;
 	for(i=0;i<96516;i++)
 	{
-		fprintf(of,"%i,\n", texton_local[i]);
+		fprintf(of,"%i,\n", texton[i]);
 	}
 	fclose(of);
 
@@ -56,14 +56,14 @@ void CPU::Filter() {
 	  //allocate space for zero padded image
 	  float* image_padded = (float*)malloc((WIDTH+(FILTERSIZE-1))*(HEIGHT+(FILTERSIZE-1))*sizeof(float));
 	  memset(image_padded, 0, (WIDTH+(FILTERSIZE-1))*(HEIGHT+(FILTERSIZE-1))*sizeof(float));
-	  float* image_output = (float*)malloc(sizeof(float)*N_PIXELS*NUM_FILT);
+	  //float* image_output = (float*)malloc(sizeof(float)*N_PIXELS*NUM_FILT);
 	  using namespace std;
 	  cout << "Filtering starting" << endl;
 	//   timeval stop, start;
 	//   gettimeofday(&start, NULL);
 	  //zero-pad image, so it is ready for convolution
 
-	  	  zeropad(image_output_local, image_padded, (FILTERSIZE-1)/2);
+	  	  zeropad(image, image_padded, (FILTERSIZE-1)/2);
 
 	//   gettimeofday(&stop, NULL);
 	//   printf("zeropadding took: %lu us.\n", (stop.tv_usec - start.tv_usec));
@@ -71,12 +71,12 @@ void CPU::Filter() {
 	  //do this for all 15 filters
 	  for(int i = 0; i < NUM_FILT; i++)
 	  {
-	    conv(filt[i], image_padded, image_output, i);
+	    conv(filt[i], image_padded, imageFiltered, i);
 	  }
-	  image_output_local = image_output;
 
 	  using namespace std;
 	  cout << "Notify Filter Done" << endl;
 
-	  filterDone.write(true);
+	  imageFilteredSig.write(imageFiltered);
+	  textonSig.write(texton);
 }

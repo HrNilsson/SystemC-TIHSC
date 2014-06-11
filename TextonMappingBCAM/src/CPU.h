@@ -9,16 +9,18 @@
 #define CPU_H_
 
 #include <systemc.h>
-//#include "defs.h"
 
 
 class CPU : public sc_module
 {
-	float* image_output_local;
-	int* texton_local;
+	float image[96516] = {};
+	float imageFiltered[96516*15] = {};
+	int texton[96516] = {};
+
 
 public:
-	sc_out<bool> filterDone;
+	sc_out<float*> imageFilteredSig;
+	sc_out<int*> textonSig;
 	sc_in<bool> kMeansDone;
 	sc_event readDone;
 
@@ -28,12 +30,9 @@ public:
 
 	SC_HAS_PROCESS(CPU);
 
-	CPU (sc_module_name nm, float* image, int* texton)
+	CPU (sc_module_name nm)
 	: sc_module(nm)
 	{
-		image_output_local = image;
-		texton_local = texton;
-
 		SC_THREAD(ReadImage);
 		
 		SC_THREAD(WriteImage);

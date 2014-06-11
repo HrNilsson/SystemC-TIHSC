@@ -49,17 +49,12 @@ void k_means_calc_distance(float* centers, float* feature, int* pixelClusterInde
   float min_d;
   int p,c,i;
   
-
-  fprintf(stdout,"1\n");
   for(p = 0; p < N_PIXELS; p++)
   {
-	  fprintf(stdout,"Pixels: %i\n", p);
     // set min_d to maximum distance to evaluate new distances for every pixel
     min_d = 1000.0f;
     for(c = 0; c < N_CLUSTERS; c++)
     {
-    	fprintf(stdout,"Clusters: %i\n", c);
-
       for(i = 0; i < NUM_FILT; i++)
       {
 	d[p] += pow(centers[c*NUM_FILT+i]-(double)(feature[p*NUM_FILT+i]),2);
@@ -80,9 +75,7 @@ void k_means_calc_distance(float* centers, float* feature, int* pixelClusterInde
       }
     }
   }
-  fprintf(stdout,"6\n");
   free(d);
-  fprintf(stdout,"7\n");
 }
 
 void calc_mean_value(int* labelImage, float* feature_image, float* means)
@@ -148,7 +141,7 @@ void k_means(float* features, int* textonmap)
   calc_mean_value(textonmap, features, meanValues);
 
   //t1 = clock();
-  for(iterator = 0; iterator < 1; iterator++)
+  for(iterator = 0; iterator < N_ITERATIONS; iterator++)
   {
     k_means_calc_distance(meanValues, features, textonmap);
       

@@ -15,7 +15,7 @@
 #define NUM_FILT 15
 #define N_CLUSTERS 64
 
-#define N_ITERATIONS 10
+#define N_ITERATIONS 1000
 
 #ifdef __cplusplus
 extern "C" {
